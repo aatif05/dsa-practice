@@ -1,8 +1,8 @@
 public class BinarySeach {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int target = 7;
-        int result = binarySearch(arr, target);
+        int target = 0;
+        boolean result = binarySearch(arr, target);
         System.out.println(result);
     }
 
@@ -12,8 +12,15 @@ public class BinarySeach {
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (arr[mid] == target) {
-                return mid;
+                return true;
+            }
+            else if (arr[mid] < target) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
             }
         }
+        return false;
     }
 }
